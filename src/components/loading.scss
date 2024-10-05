@@ -1,0 +1,43 @@
+$mainColor: #4C0BCD;
+$secondaryColor: #ffffff;
+
+.linear-loading {
+  height: 4px;
+  background-color: $mainColor;
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 6px;
+    background-color: $secondaryColor;
+    width: 50%;
+    top: -1px;
+    left: 0;
+    animation: slide-away 3s infinite linear;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 6px;
+    background-color: $secondaryColor;
+    width: 25%;
+    top: -1px;
+    left: 0;
+    animation: slide-away 2s infinite linear;
+  }
+}
+
+@keyframes slide-away {
+  0% {
+    transform: translate(-100%, 0)
+  }
+
+  100% {
+    transform: translate(400%, 0)
+  }
+}

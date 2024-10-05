@@ -1,0 +1,82 @@
+{
+  "data": {
+    "_id": "66d06c3d151ad7d1884cb15a",
+    "email": "m88771314@gmail.com",
+    "roles": [
+      {
+        "_id": "66e18642f02fa08dfc6bdbea",
+        "user": "66d06c3d151ad7d1884cb15a",
+        "type": "author",
+        "company": null,
+        "__v": 0
+      },
+      {
+        "_id": "66e582fec53ad5f0daad9bec",
+        "user": "66d06c3d151ad7d1884cb15a",
+        "type": "author",
+        "company": {
+          "_id": "66e582fdc53ad5f0daad9bea",
+          "name": "Test response",
+          "author": "66d06c3d151ad7d1884cb15a"
+        },
+        "__v": 0
+      },
+      {
+        "_id": "66e5869ac53ad5f0daad9bf6",
+        "user": "66d06c3d151ad7d1884cb15a",
+        "type": "author",
+        "company": {
+          "_id": "66e5869ac53ad5f0daad9bf4",
+          "name": "Test get id",
+          "author": "66d06c3d151ad7d1884cb15a"
+        },
+        "__v": 0
+      }
+    ],
+    "isAdmin": false,
+    "notifications": [
+      "66eae56125cbf590b741d144"
+    ],
+    "selectedRole": "66e5869ac53ad5f0daad9bf6",
+    "name": "Muhammad",
+    "surname": "Abdullayev"
+  },
+  "status": 200,
+  "statusText": "",
+  "headers": {
+    "content-length": "273",
+    "content-type": "application/json; charset=utf-8"
+  },
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
+    },
+    "adapter": [
+      "xhr",
+      "http",
+      "fetch"
+    ],
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
+    "env": {},
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDA2YzNkMTUxYWQ3ZDE4ODRjYjE1YSIsImlhdCI6MTcyNzQ1MjI0NCwiZXhwIjoxNzI3NDgxMDQ0fQ.0ZQ0kgydpOTrEAvZQ5alSg33yubdIJI8oP3tpZTBROQ"
+    },
+    "baseURL": "https://enterprise-management-crm.onrender.com/api",
+    "method": "get",
+    "url": "/auth"
+  },
+  "request": {}
+}
