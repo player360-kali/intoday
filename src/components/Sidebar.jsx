@@ -3,13 +3,15 @@ import Employes from "./Employes"
 import Viewers from "./Viewers"
 import Workspace from "./Workspace"
 import { IoIosSettings } from "react-icons/io";
+import logo from "../assets/logo.png"
 
 const Sidebar = () => {
   return (
     <div className="w-[25%] h-[100vh] border border-solid p-[15px]">
       <div className="w-[100%] h-[100%] flex flex-col gap-[20px]">
-        <div className="w-[100%] h-auto bg-[#24114B] py-[14px] px-[20px] rounded-[6px] font-semibold">
-          <h1 className="text-[30px]">Intoday</h1>
+        <div className="w-[100%] h-auto bg-[#8469B9] py-[14px] px-[20px] rounded-[16px] font-semibold flex items-center gap-[20px]">
+          <img className="w-[36px] h-[36px] rounded-[6px]" src={logo} alt="" />
+          <h1 className="text-[30px]">Eventify</h1>
         </div>
         <Workspace />
         <Employes />

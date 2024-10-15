@@ -8,13 +8,76 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+  outline: none;
   color: #fff;
 }
 
 body {
-  background-color: #0C0814;
+  background-color: #171922;
+  /* overflow-x: hidden; */
 }
 
 img {
   object-fit: cover;
+}
+
+/* Hide scrollbar arrows and customize scrollbar appearance */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  /* Adjust scrollbar height */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Scrollbar thumb color */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Scrollbar track color */
+}
+
+/* Optional: Hide scrollbar entirely (no arrows or scroll thumb) */
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
+  /* This removes the scroll arrows */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.table .dragging {
+  opacity: 0.5;
+}
+
+table th:first-child {
+  border-radius: 6px 0px 0px 0px;
+}
+
+#thIcon {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  cursor: pointer;
+}
+
+#thName:hover #thIcon {
+  opacity: 1;
+  visibility: visible;
+}
+
+details,
+details summary {
+  padding-left: 0;
+  background-image: none;
+  -webkit-appearance: none;
 }

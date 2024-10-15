@@ -4,10 +4,12 @@ import { MdOutlinePersonAddAlt } from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa6";
 import profileIcon from "../assets/profile.svg";
 import { useUser } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const { userData, changeRole, loading, companyData } = useUser();
   const [modal, setModal] = useState(false);
+  const navigate = useNavigate()
 
   const userRoles = useMemo(() => {
     if (userData?.roles) {
@@ -30,10 +32,10 @@ const Nav = () => {
         <h2 className="text-[26px] font-bold text-[#8469B9]">{companyData?.name ?? "Select your company"}</h2>
       </div>
       <div className="flex justify-between gap-[10px]">
-        <div className="h-[100%] border border-solid rounded-[10px] p-[10px]">
+        <div onClick={() => navigate("/notifications")} className="h-[100%] border border-solid rounded-[10px] p-[10px] cursor-pointer">
           <GoBell size={26} />
         </div>
-        <div className="h-[100%] border border-solid rounded-[10px] p-[10px]">
+        <div onClick={() => navigate("/invite")} className="h-[100%] border border-solid rounded-[10px] p-[10px] cursor-pointer">
           <MdOutlinePersonAddAlt size={26} />
         </div>
         <div className="h-[100%] border border-solid rounded-[10px] flex gap-[6px] items-center p-[5px] relative">

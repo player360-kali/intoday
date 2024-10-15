@@ -1,63 +1,63 @@
-import { Navigate, Route, Routes } from "react-router-dom"
-import HomePage from "./pages/HomePage"
-import { useUser } from "./context/UserContext"
-import LoginPage from "./pages/LoginPage"
-import Register from "./pages/Register"
-import Loading from "./components/Loading"
-import WorkPage from "./pages/WorkPage"
-import SheetsPage from "./pages/SheetsPage"
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import Register from './pages/Register';
+import WorkPage from './pages/WorkPage';
+import SheetsPage from './pages/SheetsPage';
+import ProtectedRoute from './context/ProtectedRoutes';
+import Invite from './pages/Invite';
+import Notifications from './components/Notifications';
+import Notification from './pages/Notification';
 
 function App() {
-
-  const { haveUserData, pageLoading } = useUser();
-
-  // eslint-disable-next-line react/prop-types
-  const RequireDashboard = ({ children }) => {
-    if (pageLoading) { return <Loading />; } // Show loading state
-    return haveUserData ? children : <Navigate to="/login" />;
-  };
-
-  // eslint-disable-next-line react/prop-types
-  const RequireLogin = ({ children }) => {
-    if (pageLoading) return <Loading />; // Show loading state
-    return haveUserData ? <Navigate to="/" /> : children;
-  };
-
   return (
     <>
       <Routes>
         <Route path="/" element={
-          <RequireDashboard>
+          <ProtectedRoute>
             <HomePage />
-          </RequireDashboard>
+          </ProtectedRoute>
         } />
 
         <Route path="/:workId" element={
-          <RequireDashboard>
+          <ProtectedRoute>
             <WorkPage />
-          </RequireDashboard>
+          </ProtectedRoute>
         } />
 
         <Route path="/:workId/:sheetId" element={
-          <RequireDashboard>
+          <ProtectedRoute>
             <SheetsPage />
-          </RequireDashboard>
+          </ProtectedRoute>
         } />
 
-        <Route path="/login" element={
-          <RequireLogin>
-            <LoginPage />
-          </RequireLogin>
+        <Route path="/invite" element={
+          <ProtectedRoute>
+            <Invite />
+          </ProtectedRoute>
         } />
 
-        <Route path="/create-account" element={
-          <RequireLogin>
-            <Register />
-          </RequireLogin>
+        <Route path="/notifications" element={
+          <ProtectedRoute>
+            <Notifications />
+          </ProtectedRoute>
         } />
+
+        <Route path="/notifications/:notificationId" element={
+          <ProtectedRoute>
+            <Notification />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/create-account" element={<Register />} />
+
+        <Route path='/*' element={(
+          <>Not Found 404</>
+        )} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

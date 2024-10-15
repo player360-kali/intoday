@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import useServer from "../api/server";
 import { useAuth } from "../context/AuthContext";
@@ -14,22 +14,26 @@ const LoginPage = () => {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false)
   const server = useServer();
-  const { saveToken } = useAuth()
+  const navigate = useNavigate()
+  const { saveToken } = useAuth();
 
   const login = async (inp) => {
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await server.post("/auth/login", {
         email: inp.email,
         password: inp.password,
       });
-      saveToken(response.data.token)
+      localStorage.setItem('token', response.data.token);  // Tokenni localStorage-ga saqlaymiz
+      saveToken(response.data.token); // Auth context-ga tokenni saqlaymiz
+      navigate("/");  // Login muvaffaqiyatli bo'lsa, home sahifasiga o'tamiz
     } catch (error) {
       console.error("Login error:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
+
 
   return (
     <div className="w-[100%] h-[100vh] flex flex-col items-center">

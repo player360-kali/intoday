@@ -7,20 +7,23 @@ import Sheets from "../components/Sheets"
 
 const WorkPage = () => {
   const { workId } = useParams();
-  const { getOneWorkspace, companyData } = useUser();
+  const { getOneWorkspace, getAllSheets, ids, setIds } = useUser();
 
   useEffect(() => {
-    if (workId !== null || workId !== undefined) {
-      sessionStorage.setItem("workId", workId)
+    if (workId) {
+      setIds({
+        workId: workId,
+        sheetId: ids.sheetId
+      })
+      getOneWorkspace(workId);
+      getAllSheets();
     }
-    getOneWorkspace(workId);
-    console.log(companyData);
-  }, [workId, companyData]);
+  }, [workId]);
 
   return (
     <div className="w-[100%] flex">
       <Sidebar />
-      <div className="w-[100%] flex flex-col">
+      <div className="w-[75%] flex flex-col">
         <Nav />
         <div className="w-[100%] h-auto p-[20px]">
           <Sheets />
